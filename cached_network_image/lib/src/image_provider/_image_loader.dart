@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'dart:ui';
+import 'dart:developer';
 
 import 'package:cached_network_image_platform_interface/cached_network_image_platform_interface.dart';
 import 'package:flutter/material.dart';
@@ -131,7 +132,7 @@ class ImageLoader implements platform.ImageLoader {
       });
 
       errorListener?.call();
-      rethrow;
+      log("cached_network_image error", error: e);
     } finally {
       await chunkEvents.close();
     }
